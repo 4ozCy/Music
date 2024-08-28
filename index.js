@@ -3,14 +3,10 @@ require('dotenv').config(); // Load environment variables from .env file
 const { Client, GatewayIntentBits } = require('discord.js');
 const { Node, PlayerManager } = require('discord.js-lavalink');
 
-const client = new Client({
-    intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildVoiceStates,
-        GatewayIntentBits.GuildMessages,
-    ]
+const client = new Client({ 
+      intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers, GatewayIntentBits.DirectMessages, GatewayIntentBits.GuildVoiceStates],
+    partials: [Partials.Channel, Partials.Message, Partials.User, Partials.GuildMember],
 });
-
 const nodes = [
     { 
         host: 'lava-v3.ajieblogs.eu.org', 
